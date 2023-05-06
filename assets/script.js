@@ -8,6 +8,7 @@ var possiblePassword = [];
 
 // Function to determine the length and complexity of the password
 function generatePassword () {
+  // prompts user for password criteria and if wrong input is entered, user has to start again
     var passwordLength = prompt("The password must be between 8 and 128 characters long, how long would you like it to be?");
     if (passwordLength < 8 || passwordLength > 128 || isNaN(parseInt(passwordLength))) {
       alert("Please enter a number between 8 and 128 characters.");
@@ -21,6 +22,28 @@ function generatePassword () {
 
     hasSpecial = confirm("Do you want your password to have special characters?");
    
+    if(
+      hasLowercase === false &&
+      hasUppercase === false &&
+      hasNumeric === false &&
+      hasSpecial === false
+    ) {
+      alert("Please select at minimum one character type!")
+      generatePassword();
+    }
+    // concatenating contents of the char variables into possiblePassword
+    if(hasLowercase) {
+      possiblePassword = possiblePassword.concat(lowercaseChar);
+    }
+    if(hasUppercase) {
+      possiblePassword = possiblePassword.concat(uppercaseChar);
+    }
+    if(hasNumeric) {
+      possiblePassword = possiblePassword.concat(numericalChar);
+    }
+    if(hasSpecial) {
+      possiblePassword = possiblePassword.concat(specialChar);
+    }
 }
 
 // Generate button
