@@ -1,53 +1,30 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberChar = "0123456789";
-var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var allCharacters = "";
+
+var lowercaseChar = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var uppercaseChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var numericalChar = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var specialChar = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
+var possiblePassword = [];
 
 // Function to determine the length and complexity of the password
 function generatePassword () {
-  console.log("Button was clicked")
-  var passwordLength = prompt(
-    "The password must be between 8 and 128 characters long, how long would you like it to be?"
-  );
-  if (passwordLength < 8 || passwordLength > 128 || isNaN(parseInt(passwordLength))) {
-    alert("Please enter a number between 8 and 128 characters.");
-  } else {
-    var lowercaseChar = confirm("Would you like to include lower case characters?");
-    if(lowercaseChar) {
-      allCharacters += lowercaseChar
-    };
-    var uppercase = confirm("Would you like to include upper case characters?");
-    if(uppercase) {
-      allCharacters += uppercase
-    };
-    var specialChar = confirm("Would you like to include special characters?");
-    if(specialChar) {
-      allCharacters += specialChar
-    };
-    var numberChar = confirm("Would you like to include numbers?");
-    if(numberChar) {
-      allCharacters += numberChar
-    };
-
-    if (
-      lowercaseChar === false && 
-      uppercase === false && 
-      specialChar === false && 
-      numberChar === false
-    ) {
-      alert("Please select at minumum one character type.")
+    var passwordLength = prompt("The password must be between 8 and 128 characters long, how long would you like it to be?");
+    if (passwordLength < 8 || passwordLength > 128 || isNaN(parseInt(passwordLength))) {
+      alert("Please enter a number between 8 and 128 characters.");
       generatePassword()
     }
-  }
-  var password = "";
-  for(let i = 0; i < passwordLength; i++) {
-    password += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
-  }
-  return password
+    hasLowercase = confirm("Do you want your password to have lowercase characters?")
+    
+    hasUppercase = confirm("Do you want your password to have uppercase characters?")
+  
+    hasNumeric = confirm("Do you want your password to have numerical characters?");
+
+    hasSpecial = confirm("Do you want your password to have special characters?");
+   
 }
+
+// Generate button
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
