@@ -44,6 +44,14 @@ function generatePassword () {
     if(hasSpecial) {
       possiblePassword = possiblePassword.concat(specialChar);
     }
+
+     // for loop which randomizes passwords
+     var finalPassword = ""
+     for(let i = 0; i < passwordLength; i++) {
+       let ranPassGen = [Math.floor(Math.random() * possiblePassword.length)];
+       finalPassword = finalPassword + possiblePassword[ranPassGen];
+     }
+     return finalPassword
 }
 
 // Generate button
